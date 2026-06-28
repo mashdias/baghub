@@ -9,7 +9,8 @@
 ## 📌 Overview
 BagHub is a full-stack, enterprise-grade e-commerce platform built with Next.js. It features a fully responsive design, secure user authentication, role-based access control (Admin/User), and seamless payment integrations. The platform is designed with a strong focus on security, performance, and user experience.
 
-![image 1](image.png)
+<img width="1896" height="871" alt="Screenshot 2026-06-22 103501" src="https://github.com/user-attachments/assets/eab6cbd9-1fb6-4a5d-8d8a-26d4b0796a8e" />
+
 ![image 2](image-1.png)
 ![image 3](image-2.png)
 ![image 4](image-3.png)
