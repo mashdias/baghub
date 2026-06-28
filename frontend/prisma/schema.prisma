@@ -1,0 +1,124 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role           String          @default("customer")
+  phone          String?
+  orders         Order[]
+  customRequests CustomRequest[]
+  reviews        Review[]
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  resetToken       String?
+  resetTokenExpiry DateTime?
+}
+
+model CustomRequest {
+  id                String   @id @default(uuid())
+  userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  description       String
+  referenceImageUrl String?
+  status            String   @default("Pending")
+  quotedPrice       Float?
+  adminNote         String?
+  paymentStatus     String   @default("Unpaid")
+  shippingName      String?
+  shippingAddress   String?
+  shippingCity      String?
+  shippingPhone     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  price       Float
+  stock       Int      @default(0)
+  category    String   @default("Uncategorized")
+  variants    ProductVariant[]
+  orders      Order[]
+  orderItems  OrderItem[]
+  reviews     Review[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  isActive    Boolean  @default(true)
+}
+
+model Order {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId  String?
+  product    Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  status     String   @default("Processing")
+  total      Float
+
+  shippingName    String?
+  shippingAddress String?
+  shippingCity    String?
+  shippingPhone   String?
+
+  items      OrderItem[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String?
+  product   Product?  @relation(fields: [productId], references: [id], onDelete: SetNull)
+  quantity  Int
+  price     Float
+}
+
+model StoreSettings {
+  id          String  @id @default("singleton")
+  isStoreOpen Boolean @default(true)
+  storeName   String  @default("Bag Hub")
+  contactEmail String @default("")
+}
+
+model Category {
+  id   String @id @default(cuid())
+  name String @unique
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  rating    Int
+  comment   String
+  imageUrl  String?
+  isApproved Boolean @default(false)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductVariant {
+  id         String   @id @default(cuid())
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  colorName  String
+  colorCode  String?
+  imageUrl   String
+}

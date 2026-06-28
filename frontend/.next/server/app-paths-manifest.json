@@ -1,0 +1,13 @@
+{
+  "/login/page": "app/login/page.js",
+  "/forgot-password/page": "app/forgot-password/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/register/page": "app/register/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/api/orders/route": "app/api/orders/route.js",
+  "/api/dashboard-stats/route": "app/api/dashboard-stats/route.js",
+  "/api/customers/route": "app/api/customers/route.js",
+  "/api/admin/settings/global/route": "app/api/admin/settings/global/route.js",
+  "/admin/page": "app/admin/page.js",
+  "/admin/settings/page": "app/admin/settings/page.js"
+}

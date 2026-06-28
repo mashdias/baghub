@@ -1,0 +1,45 @@
+{
+  "name": "baghub-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^3.0.71",
+    "@ai-sdk/react": "^3.0.179",
+    "@prisma/client": "^5.22.0",
+    "@stripe/stripe-js": "^9.4.0",
+    "ai": "^6.0.177",
+    "axios": "^1.6.8",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
+    "framer-motion": "^11.0.0",
+    "lucide-react": "^0.370.0",
+    "next": "14.2.3",
+    "next-auth": "^4.24.14",
+    "nodemailer": "^7.0.13",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "stripe": "^22.1.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.12.7",
+    "@types/nodemailer": "^8.0.0",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "autoprefixer": "^10.5.0",
+    "dotenv": "^17.4.2",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8.4.38",
+    "prisma": "^5.22.0",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5"
+  }
+}
